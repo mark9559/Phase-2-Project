@@ -27,7 +27,7 @@ Mark Mwangi
 
    2. Product Listing:
 
-      Display a list of available sneakers.Sneaker products are organized and showcased in an organized catalog, making it simple for customers to browse through the inventory.
+     Display a list of available sneakers.Sneaker products are organized and showcased in an organized catalog, making it simple for customers to browse through the inventory.
 
    3. Product Details:
 
@@ -80,7 +80,7 @@ Otherwise the application works perfectly well, no bugs.
 
 ## License
 
-```MIT License
+MIT License
 
 Copyright (c) 2023 Mark Mwangi
 
