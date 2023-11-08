@@ -33,6 +33,8 @@ const Admin = () => {
       .then((data) => {
         // Update the sneakers list with the new sneaker
         setSneakers([...sneakers, data]);
+        alert('Sneaker Added Successfully');
+
         // Clear the form
         setNewSneaker({
           brand: '',
@@ -46,6 +48,7 @@ const Admin = () => {
         });
       })
       .catch((error) => console.error('Error adding sneaker:', error));
+
   };
 
   const handleUpdateSneaker = () => {
@@ -69,6 +72,22 @@ const Admin = () => {
         setSelectedSneaker(null);
       })
       .catch((error) => console.error('Error updating sneaker:', error));
+      alert('Sneaker Updated Successfully');
+
+  };
+
+  const handleDeleteSneaker = (sneakerId) => {
+    // Send a DELETE request to remove the selected sneaker from the API
+    fetch(`http://localhost:3000/sneakers/${sneakerId}`, {
+      method: 'DELETE',
+    })
+      .then(() => {
+        // Update the sneakers list by filtering out the deleted sneaker
+        setSneakers(sneakers.filter((sneaker) => sneaker.id !== sneakerId));
+        setSelectedSneaker(null); // Clear the selected sneaker
+      })
+      .catch((error) => console.error('Error deleting sneaker:', error));
+      alert('Sneaker Deleted Successfully');
   };
 
   return (
@@ -119,7 +138,7 @@ const Admin = () => {
 </form>
       </div>
       <div>
-        <h3>Update Sneaker Details</h3>
+        <h3>Update or Delete Sneaker Details</h3>
         <select onChange={(e) => setSelectedSneaker(sneakers.find(sneaker => sneaker.id === parseInt(e.target.value)))}>
           <option value="">Select a Sneaker</option>
           {sneakers.map((sneaker) => (
@@ -167,6 +186,7 @@ const Admin = () => {
               />
             </div>
           <button type="button" onClick={handleUpdateSneaker}>Update Sneaker</button>
+          <button type="button" class="btn btn-danger" onClick={() => handleDeleteSneaker(selectedSneaker.id)}>Delete Sneaker</button>
         </form>
         )}
       </div>
