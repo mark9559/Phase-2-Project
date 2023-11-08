@@ -10,6 +10,7 @@ const Admin = () => {
     price: 0,
     size: '',
     quantity: 0,
+    image: '',
   });
   const [selectedSneaker, setSelectedSneaker] = useState(null);
 
@@ -40,6 +41,8 @@ const Admin = () => {
           price: 0,
           size: '',
           quantity: 0,
+          image: '',
+
         });
       })
       .catch((error) => console.error('Error adding sneaker:', error));
@@ -98,6 +101,20 @@ const Admin = () => {
     <label htmlFor="quantity" className="form-label">Quantity</label>
     <input type="number" className="form-control" id="quantity" value={newSneaker.quantity} onChange={(e) => setNewSneaker({ ...newSneaker, quantity: parseInt(e.target.value) })} />
   </div>
+  <div className="mb-3">
+            <label htmlFor="image" className="form-label">
+              Image URL
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="image"
+              value={newSneaker.image}
+              onChange={(e) =>
+                setNewSneaker({ ...newSneaker, image: e.target.value })
+              }
+            />
+          </div>
   <button type="button" onClick={handleAddSneaker}>Add Sneaker</button>
 </form>
       </div>
@@ -135,6 +152,20 @@ const Admin = () => {
             <label htmlFor="quantity" className="form-label">Quantity</label>
             <input type="number" className="form-control" id="quantity" value={selectedSneaker.quantity} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, quantity: parseInt(e.target.value) })} />
           </div>
+          <div className="mb-3">
+              <label htmlFor="image" className="form-label">
+                Image URL
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="image"
+                value={selectedSneaker.image}
+                onChange={(e) =>
+                  setSelectedSneaker({ ...selectedSneaker, image: e.target.value })
+                }
+              />
+            </div>
           <button type="button" onClick={handleUpdateSneaker}>Update Sneaker</button>
         </form>
         )}

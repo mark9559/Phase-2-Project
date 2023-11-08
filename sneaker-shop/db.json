@@ -402,7 +402,8 @@
       "price": 100,
       "size": "US 7,US 8,US 9,US10",
       "quantity": 15,
-      "id": 29
+      "id": 29,
+      "image": "https://www.converse.com/dw/image/v2/BCZC_PRD/on/demandware.static/-/Sites-cnv-master-catalog/default/dw246d3b73/images/e_08/568497C_E_08X1.jpg?sw=406"
     }
   ],
   "cart": [],
