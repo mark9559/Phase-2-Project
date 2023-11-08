@@ -1,27 +1,31 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import SneakerList from './components/SneakerList';
-import SneakerDetail from './components/SneakerDetail';
-import AddSneaker from './components/AddSneaker';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import About from './components/About';
+import Admin from './components/Admin';
+import Cart from './components/Cart';
+import Orders from './components/Orders';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <div>
         <Navbar />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/sneakers" component={SneakerList} />
-          <Route path="/about" component={About} /> {/* New About route */}
-          <Route path="/admin" component={Admin} />
-        </Switch>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/sneakers" element={<SneakerList />} />
+          <Route path="/about" element={<About />} /> {/* New About route */}
+          <Route path="/cart" element={<Cart />} /> {/* Add the Cart route */}
+          <Route path="/orders" element={<Orders />} /> {/* Add the Orders route */}
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
         <Footer />
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
+
 export default App;

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-
+import './styles.css'
 const SneakerList = () => {
   const [sneakers, setSneakers] = useState([]);
 
   useEffect(() => {
-    // Define the API endpoint URL
-    const apiUrl = 'https://your-api-url.com/sneakers';
+    // Fetch sneakers data from your API or data source
+    const apiUrl = 'http://localhost:3000/sneakers';
 
-    // Make a GET request to fetch the data
     fetch(apiUrl)
       .then((response) => {
         if (!response.ok) {
@@ -25,14 +24,23 @@ const SneakerList = () => {
 
   return (
     <div>
-      <h2>Sneaker List</h2>
-      <ul>
+      <h2>Sneaker Catalog</h2>
+      <div className="row row-cols-1 row-cols-md-4">
         {sneakers.map((sneaker) => (
-          <li key={sneaker.id}>
-            {sneaker.name} - ${sneaker.price}
-          </li>
+          <div key={sneaker.id} className="col-md-3">
+            <div className="custom-sneaker-card">
+              <img src={sneaker.image} alt={sneaker.name} className='sneaker-image' />
+              <h3>{sneaker.brand} - {sneaker.name}</h3>
+              <p>{sneaker.description}</p>
+              <p>Price: ${sneaker.price}</p>
+              <p>Size: {sneaker.size}</p>
+              <p>Quantity: {sneaker.quantity}</p>
+              {/* Add more details as needed */}
+              <button className="custom-btn">Add to Cart</button>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
