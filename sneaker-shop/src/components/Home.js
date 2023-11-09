@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Home = () => {
     const backgroundImageStyle = {
       backgroundImage: `url('https://cms-cdn.thesolesupplier.co.uk/2022/08/floating-shelves_w1160.jpg')`,

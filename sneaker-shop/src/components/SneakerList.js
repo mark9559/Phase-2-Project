@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './styles.css';
-import Cart from './Cart'; // Import your Cart component
+import Cart from './Cart';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 
@@ -9,7 +9,7 @@ const SneakerList = ({ cart, setCart }) => {
   const [sneakers, setSneakers] = useState([]);
 
   useEffect(() => {
-    // Fetch sneakers data from your API or data source
+    // Fetch sneakers data from local API or data source
     const apiUrl = 'http://localhost:3000/sneakers';
 
     fetch(apiUrl)
@@ -28,6 +28,7 @@ const SneakerList = ({ cart, setCart }) => {
   }, []);
 
   const addToCart = (sneaker) => {
+          // Display a SweetAlert success message
     Swal.fire({
       title: 'Added to Cart!',
       text: `${sneaker.name} has been added to your cart.`,

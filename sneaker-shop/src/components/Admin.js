@@ -18,7 +18,7 @@ const Admin = () => {
   const [selectedSneaker, setSelectedSneaker] = useState(null);
 
   useEffect(() => {
-    // Fetch sneakers data from your API
+    // Fetch sneakers data from local API
     fetch('http://localhost:3000/sneakers')
       .then((response) => response.json())
       .then((data) => setSneakers(data))
@@ -36,6 +36,7 @@ const Admin = () => {
       .then((data) => {
         // Update the sneakers list with the new sneaker
         setSneakers([...sneakers, data]);
+        // Display a SweetAlert success message
         Swal.fire({
           title: "Success!",
           text: "Sneaker Added Successfully!",
@@ -79,6 +80,7 @@ const Admin = () => {
         setSelectedSneaker(null);
       })
       .catch((error) => console.error('Error updating sneaker:', error));
+      // Display a SweetAlert success message
       Swal.fire({
         title: "Updated!",
         text: "Sneaker Updated Successfully!",
@@ -97,6 +99,7 @@ const Admin = () => {
         setSelectedSneaker(null); // Clear the selected sneaker
       })
       .catch((error) => console.error('Error deleting sneaker:', error));
+      // Display a SweetAlert success message
       Swal.fire({
         title: "Delete Sneaker?",
         text: "Are you sure you want to delete?!",
@@ -122,46 +125,46 @@ const Admin = () => {
       <div>
         <h3>Add a New Sneaker</h3>
         <form>
-  <div className="mb-3">
-    <label htmlFor="brand" className="form-label">Brand</label>
-    <input type="text" className="form-control" id="brand" value={newSneaker.brand} onChange={(e) => setNewSneaker({ ...newSneaker, brand: e.target.value })} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="name" className="form-label">Name</label>
-    <input type="text" className="form-control" id="name" value={newSneaker.name} onChange={(e) => setNewSneaker({ ...newSneaker, name: e.target.value })} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="description" className="form-label">Description</label>
-    <textarea className="form-control" id="description" value={newSneaker.description} onChange={(e) => setNewSneaker({ ...newSneaker, description: e.target.value })} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="price" className="form-label">Price</label>
-    <input type="number" className="form-control" id="price" value={newSneaker.price} onChange={(e) => setNewSneaker({ ...newSneaker, price: parseFloat(e.target.value) })} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="size" className="form-label">Size</label>
-    <input type="text" className="form-control" id="size" value={newSneaker.size} onChange={(e) => setNewSneaker({ ...newSneaker, size: e.target.value })} />
-  </div>
-  <div className="mb-3">
-    <label htmlFor="quantity" className="form-label">Quantity</label>
-    <input type="number" className="form-control" id="quantity" value={newSneaker.quantity} onChange={(e) => setNewSneaker({ ...newSneaker, quantity: parseInt(e.target.value) })} />
-  </div>
-  <div className="mb-3">
-            <label htmlFor="image" className="form-label">
-              Image URL
-            </label>
-            <input
-              type="text"
-              className="form-control"
-              id="image"
-              value={newSneaker.image}
-              onChange={(e) =>
-                setNewSneaker({ ...newSneaker, image: e.target.value })
-              }
-            />
-          </div>
-  <button type="button" onClick={handleAddSneaker}>Add Sneaker</button>
-</form>
+            <div className="mb-3">
+              <label htmlFor="brand" className="form-label">Brand</label>
+              <input type="text" className="form-control" id="brand" value={newSneaker.brand} onChange={(e) => setNewSneaker({ ...newSneaker, brand: e.target.value })} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="name" className="form-label">Name</label>
+              <input type="text" className="form-control" id="name" value={newSneaker.name} onChange={(e) => setNewSneaker({ ...newSneaker, name: e.target.value })} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="description" className="form-label">Description</label>
+              <textarea className="form-control" id="description" value={newSneaker.description} onChange={(e) => setNewSneaker({ ...newSneaker, description: e.target.value })} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="price" className="form-label">Price</label>
+              <input type="number" className="form-control" id="price" value={newSneaker.price} onChange={(e) => setNewSneaker({ ...newSneaker, price: parseFloat(e.target.value) })} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="size" className="form-label">Size</label>
+              <input type="text" className="form-control" id="size" value={newSneaker.size} onChange={(e) => setNewSneaker({ ...newSneaker, size: e.target.value })} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="quantity" className="form-label">Quantity</label>
+              <input type="number" className="form-control" id="quantity" value={newSneaker.quantity} onChange={(e) => setNewSneaker({ ...newSneaker, quantity: parseInt(e.target.value) })} />
+            </div>
+            <div className="mb-3">
+                      <label htmlFor="image" className="form-label">
+                        Image URL
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="image"
+                        value={newSneaker.image}
+                        onChange={(e) =>
+                          setNewSneaker({ ...newSneaker, image: e.target.value })
+                        }
+                      />
+                    </div>
+            <button type="button" onClick={handleAddSneaker}>Add Sneaker</button>
+        </form>
       </div>
       <div>
         <h3>Update or Delete Sneaker Details</h3>
@@ -173,46 +176,46 @@ const Admin = () => {
         </select>
         {selectedSneaker && (
           <form>
-          <div className="mb-3">
-            <label htmlFor="brand" className="form-label">Brand</label>
-            <input type="text" className="form-control" id="brand" value={selectedSneaker.brand} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, brand: e.target.value })} />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="name" className="form-label">Name</label>
-            <input type="text" className="form-control" id="name" value={selectedSneaker.name} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, name: e.target.value })} />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="description" className="form-label">Description</label>
-            <textarea className="form-control" id="description" value={selectedSneaker.description} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, description: e.target.value })} />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="price" className="form-label">Price</label>
-            <input type="number" className="form-control" id="price" value={selectedSneaker.price} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, price: parseFloat(e.target.value) })} />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="size" className="form-label">Size</label>
-            <input type="text" className="form-control" id="size" value={selectedSneaker.size} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, size: e.target.value })} />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="quantity" className="form-label">Quantity</label>
-            <input type="number" className="form-control" id="quantity" value={selectedSneaker.quantity} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, quantity: parseInt(e.target.value) })} />
-          </div>
-          <div className="mb-3">
-              <label htmlFor="image" className="form-label">
-                Image URL
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="image"
-                value={selectedSneaker.image}
-                onChange={(e) =>
-                  setSelectedSneaker({ ...selectedSneaker, image: e.target.value })
-                }
-              />
+            <div className="mb-3">
+              <label htmlFor="brand" className="form-label">Brand</label>
+              <input type="text" className="form-control" id="brand" value={selectedSneaker.brand} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, brand: e.target.value })} />
             </div>
-          <button type="button" onClick={handleUpdateSneaker}>Update Sneaker</button>
-          <button type="button" class="btn btn-danger" onClick={() => handleDeleteSneaker(selectedSneaker.id)}>Delete Sneaker</button>
+            <div className="mb-3">
+              <label htmlFor="name" className="form-label">Name</label>
+              <input type="text" className="form-control" id="name" value={selectedSneaker.name} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, name: e.target.value })} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="description" className="form-label">Description</label>
+              <textarea className="form-control" id="description" value={selectedSneaker.description} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, description: e.target.value })} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="price" className="form-label">Price</label>
+              <input type="number" className="form-control" id="price" value={selectedSneaker.price} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, price: parseFloat(e.target.value) })} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="size" className="form-label">Size</label>
+              <input type="text" className="form-control" id="size" value={selectedSneaker.size} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, size: e.target.value })} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="quantity" className="form-label">Quantity</label>
+              <input type="number" className="form-control" id="quantity" value={selectedSneaker.quantity} onChange={(e) => setSelectedSneaker({ ...selectedSneaker, quantity: parseInt(e.target.value) })} />
+            </div>
+            <div className="mb-3">
+                <label htmlFor="image" className="form-label">
+                  Image URL
+                </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="image"
+                  value={selectedSneaker.image}
+                  onChange={(e) =>
+                    setSelectedSneaker({ ...selectedSneaker, image: e.target.value })
+                  }
+                />
+              </div>
+            <button type="button" onClick={handleUpdateSneaker}>Update Sneaker</button>
+            <button type="button" class="btn btn-danger" onClick={() => handleDeleteSneaker(selectedSneaker.id)}>Delete Sneaker</button>
         </form>
         )}
       </div>
