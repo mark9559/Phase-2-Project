@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import './styles.css';
 import Cart from './Cart'; // Import your Cart component
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
+
 
 const SneakerList = ({ cart, setCart }) => {
   const [sneakers, setSneakers] = useState([]);
@@ -25,6 +28,13 @@ const SneakerList = ({ cart, setCart }) => {
   }, []);
 
   const addToCart = (sneaker) => {
+    Swal.fire({
+      title: 'Added to Cart!',
+      text: `${sneaker.name} has been added to your cart.`,
+      icon: 'success',
+      showConfirmButton: false,
+      timer: 1500
+    });
     // Check if the sneaker is already in the cart
     const existingItem = cart.find((item) => item.id === sneaker.id);
 

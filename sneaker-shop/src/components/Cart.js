@@ -1,7 +1,12 @@
 import React from 'react';
+import './styles.css';
+import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
+
 
 const Cart = ({ cart, setCart }) => {
   const removeFromCart = (sneakerId) => {
+    Swal.fire('Removed!', 'The sneaker has been removed from the cart.', 'success');
     // Remove the sneaker from the cart
     const updatedCart = cart.filter((item) => item.id !== sneakerId);
     setCart(updatedCart);
