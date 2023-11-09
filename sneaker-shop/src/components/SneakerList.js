@@ -10,7 +10,7 @@ const SneakerList = ({ cart, setCart }) => {
 
   useEffect(() => {
     // Fetch sneakers data from local API or data source
-    const apiUrl = 'http://localhost:3000/sneakers';
+    const apiUrl = 'https://sneaker-shop-react.onrender.com/sneakers';
 
     fetch(apiUrl)
       .then((response) => {

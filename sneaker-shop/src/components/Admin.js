@@ -19,7 +19,7 @@ const Admin = () => {
 
   useEffect(() => {
     // Fetch sneakers data from local API
-    fetch('http://localhost:3000/sneakers')
+    fetch('https://sneaker-shop-react.onrender.com/sneakers')
       .then((response) => response.json())
       .then((data) => setSneakers(data))
       .catch((error) => console.error('Error fetching data:', error));
@@ -27,7 +27,7 @@ const Admin = () => {
 
   const handleAddSneaker = () => {
     // Send a POST request to add the new sneaker
-    fetch('http://localhost:3000/sneakers', {
+    fetch('https://sneaker-shop-react.onrender.com/sneakers', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newSneaker),
@@ -65,7 +65,7 @@ const Admin = () => {
     }
 
     // Send a PUT request to update the selected sneaker
-    fetch(`http://localhost:3000/sneakers/${selectedSneaker.id}`, {
+    fetch(`https://sneaker-shop-react.onrender.com/sneakers/${selectedSneaker.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(selectedSneaker),
@@ -90,7 +90,7 @@ const Admin = () => {
 
   const handleDeleteSneaker = (sneakerId) => {
     // Send a DELETE request to remove the selected sneaker from the API
-    fetch(`http://localhost:3000/sneakers/${sneakerId}`, {
+    fetch(`https://sneaker-shop-react.onrender.com/sneakers/${sneakerId}`, {
       method: 'DELETE',
     })
       .then(() => {
