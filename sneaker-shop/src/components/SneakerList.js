@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import './styles.css'
-const SneakerList = () => {
+import './styles.css';
+import Cart from './Cart'; // Import your Cart component
+
+const SneakerList = ({ cart, setCart }) => {
   const [sneakers, setSneakers] = useState([]);
 
   useEffect(() => {
@@ -22,6 +24,24 @@ const SneakerList = () => {
       });
   }, []);
 
+  const addToCart = (sneaker) => {
+    // Check if the sneaker is already in the cart
+    const existingItem = cart.find((item) => item.id === sneaker.id);
+
+    if (existingItem) {
+      // If the sneaker is in the cart, increase its quantity
+      const updatedCart = cart.map((item) =>
+        item.id === sneaker.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      );
+      setCart(updatedCart);
+    } else {
+      // If the sneaker is not in the cart, add it with quantity 1
+      setCart([...cart, { ...sneaker, quantity: 1 }]);
+    }
+  };
+
   return (
     <div>
       <h2>Sneaker Catalog</h2>
@@ -29,18 +49,22 @@ const SneakerList = () => {
         {sneakers.map((sneaker) => (
           <div key={sneaker.id} className="col-md-3">
             <div className="custom-sneaker-card">
-              <img src={sneaker.image} alt={sneaker.name} className='sneaker-image' />
+              <img src={sneaker.image} alt={sneaker.name} className="sneaker-image" />
               <h3>{sneaker.brand} - {sneaker.name}</h3>
               <p>{sneaker.description}</p>
               <p>Price: ${sneaker.price}</p>
               <p>Size: {sneaker.size}</p>
               <p>Quantity: {sneaker.quantity}</p>
-              {/* Add more details as needed */}
-              <button className="custom-btn">Add to Cart</button>
+              <button className="custom-btn" onClick={() => addToCart(sneaker)}>
+                Add to Cart
+              </button>
             </div>
           </div>
         ))}
       </div>
+
+      {/* Render the Cart component with the cart and setCart props */}
+      <Cart cart={cart} setCart={setCart} />
     </div>
   );
 };
