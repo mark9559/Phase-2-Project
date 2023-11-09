@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './styles.css'
+import Swal from 'sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css';
+
 
 const Admin = () => {
   const [sneakers, setSneakers] = useState([]);
@@ -33,7 +36,11 @@ const Admin = () => {
       .then((data) => {
         // Update the sneakers list with the new sneaker
         setSneakers([...sneakers, data]);
-        alert('Sneaker Added Successfully');
+        Swal.fire({
+          title: "Success!",
+          text: "Sneaker Added Successfully!",
+          icon: "success"
+        });
 
         // Clear the form
         setNewSneaker({
@@ -72,8 +79,11 @@ const Admin = () => {
         setSelectedSneaker(null);
       })
       .catch((error) => console.error('Error updating sneaker:', error));
-      alert('Sneaker Updated Successfully');
-
+      Swal.fire({
+        title: "Updated!",
+        text: "Sneaker Updated Successfully!",
+        icon: "success"
+      });
   };
 
   const handleDeleteSneaker = (sneakerId) => {
@@ -87,7 +97,23 @@ const Admin = () => {
         setSelectedSneaker(null); // Clear the selected sneaker
       })
       .catch((error) => console.error('Error deleting sneaker:', error));
-      alert('Sneaker Deleted Successfully');
+      Swal.fire({
+        title: "Delete Sneaker?",
+        text: "Are you sure you want to delete?!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Sneaker has been deleted.",
+            icon: "success"
+          });
+        }
+      });
   };
 
   return (
