@@ -44,7 +44,7 @@ Key Features:
 
  - Clone this repository into your desired folder in the local repository.
  - Open the folder with Visual Studio Code or any editor of your choice.
- - Then run "json-server --watch database.json" to run our server.
+ - Then run `json-server --watch database.json` to run our server.
  - The start the app by running `npm start` in your terminal.
  - And your application is up and running successfully.
        
