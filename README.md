@@ -3,7 +3,7 @@
 
 
 ## Author
-Mark Mwangi
+By Mark Mwangi
 
 ## Table of Contents
 - [Project Description](#project-description)
@@ -42,20 +42,20 @@ Key Features:
 
 ## Setup/Installation Requirements
 
- - Download zip in the code section of github to your desired folder
- - Extract the files
- - Open the folder with vs code.
+ - Clone this repository into your desired folder in the local repository.
+ - Open the folder with Visual Studio Code or any editor of your choice.
  - Then run "json-server --watch database.json" to run our server.
- - The run your index.html by either using the "GO LIVE" extension or by double clicking of the index.html
- - And your application is running.
+ - The start the app by running `npm start` in your terminal.
+ - And your application is up and running successfully.
        
 ## Live link
 
-The Deployed Frontend can be accessed here [Sneaker-Shop](https://mark9559.github.io/Phase-1-Project/)   
-
+The Deployed Frontend can be accessed here [Sneaker-Shop](https://654d65d70abc781129583b3c--meek-kataifi-39d1af.netlify.app/sneakers)   
+The Deployed Backend can also be accessed here [Backend](https://sneaker-shop-react.onrender.com/sneakers)
 
 ## Known Bugs
 
+You may encounter a 404 error upon accessing the frontend as well as loading of images.
 Otherwise the application works perfectly well, no bugs.
 
 ## Technologies used
@@ -63,9 +63,10 @@ Otherwise the application works perfectly well, no bugs.
 - HTML 
 - CSS
 - JavaScript
+- React JS
 - Fontawesome
 - BOOTSRAP
-- React JS
+- SweetAlert2
 
 ## Support and contact details
 
